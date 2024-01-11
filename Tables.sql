@@ -208,31 +208,12 @@ VALUES
     ('302', 'Stone Library at Adams National Historical Park','MA','Quincy','1870'),
     ('303', 'Robert H. Smith International Center for Jefferson Studies at Kenwood','VA','Charlottesville','2002'),
     ('304', 'James Monroe Museum and Memorial Library','VA','Fredericksburg','1786'),
-    ('305',NULL,NULL,NULL,NULL),
-    ('306',NULL,NULL,NULL,NULL),
-    ('307',NULL,NULL,NULL,NULL),
-    ('308',NULL,NULL,NULL,NULL),
-    ('309',NULL,NULL,NULL,NULL),
-    ('310',NULL,NULL,NULL,NULL),
-    ('311',NULL,NULL,NULL,NULL),
-    ('312',NULL,NULL,NULL,NULL),
-    ('313',NULL,NULL,NULL,NULL),
-    ('314',NULL,NULL,NULL,NULL),
-    ('315',NULL,NULL,NULL,NULL),
     ('316', 'Abraham Lincoln Presidential Library and Museum','IL','Springfield','2005'),
     ('317', 'President Andrew Johnson Museum and Library','TN','Tusculum','1841'),
     ('318', 'Ulysses S. Grant Presidential Library','MS','Starkville','2017'),
     ('319', 'Rutherford B. Hayes Presidential Center','OH','Fremont','1916'),
-    ('320', NULL,NULL,NULL,NULL),
-    ('321',NULL,NULL,NULL,NULL),
-    ('322',NULL,NULL,NULL,NULL),
-    ('323',NULL,NULL,NULL,NULL),
-    ('324',NULL,NULL,NULL,NULL),
     ('325', 'William McKinley Presidential Library and Museum','OH','Canton','1963'),
-    ('326',NULL,NULL,NULL,NULL),
-    ('327',NULL,NULL,NULL,NULL),
     ('328', 'Woodrow Wilson Presidential Library','VA','Staunton','1846'),
-    ('329',NULL,NULL,NULL,NULL),
     ('330', 'Calvin Coolidge Presidential Library and Museum','MA','Northampton','1920'),
     ('331', 'Herbert Hoover Presidential Library and Museum','IA','West Branch','1962'),
     ('332', 'Franklin D. Roosevelt Presidential Library and Museum','NY','Hyde Park','1941'),
@@ -247,8 +228,7 @@ VALUES
     ('341', 'George Bush Presidential Library & Museum','TX','College Station','1997'),
     ('342', 'William J. Clinton Presidential Center and Park','AR','Little Rock','2004'),
     ('343', 'George W. Bush Presidential Center','TX','Dallas','2013'),
-    ('344', 'Barack Obama Presidential Center','IL','Chicago','2021'),
-    ('345',NULL,NULL,NULL,NULL);
+    ('344', 'Barack Obama Presidential Center','IL','Chicago','2021');
 
 -- Define: UNITED STATES PRESIDENTS' PETS
 
@@ -264,7 +244,6 @@ VALUES
     ('1008',NULL,'Tiger'),
     ('1009','Sukey','Cow'),
     ('1010','The General','Horse'),
-    ('1110',NULL,NULL),
     ('1011','Old Whitey','Horse'),
     ('1012','Manson and Dixon','Ponies'),
     ('1013','Teacup','Dog'),
@@ -274,7 +253,6 @@ VALUES
     ('1016','Reb','Pony'),
     ('1116','Siam','Siamese cat'),
     ('1018','Veto','Dog'),
-    ('1019',NULL,NULL),
     ('1020',NULL,'Mocking bird'),
     ('1021','Old Whiskers','Goat'),
     ('1022','Yankee Doodle','Parrot'),
@@ -296,6 +274,5 @@ VALUES
     ('1039','Millie','Springer Spaniel'),
     ('1040','Sox','Cat'),
     ('1041','Spot','Springer Spaniel'),
-    ('1042','Bo','Water dog'),
-    ('1043',NULL,NULL);
+    ('1042','Bo','Water dog');
 
