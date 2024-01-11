@@ -1,26 +1,27 @@
+# DIALECT: MySQL
 
--- These are all my tables. I made five tables, all the presidents of the states, their first ladies
--- vice presidents, their libraries if they had any, and also pets. Presidents that didn't have any libraries
--- or pets I put them as null. When you run this database and get an error saying
---  (Msg 2714, Level 16, State 6, Line 6 There is alread an object named 'president' in the database.)
--- Please run the DROPPR.sql query and re run this query and it should work.
--- Thanks !
+# These are all my tables. I made five tables, all the presidents of the states, their first ladies
+# vice presidents, their libraries if they had any, and also pets. Presidents that didn't have any libraries
+# or pets I put them as null. When you run this database and get an error saying
+#  (Msg 2714, Level 16, State 6, Line 6 There is already an object named 'president' in the database.)
+# Please run the DROPPR.sql query and re run this query and it should work.
+# Thanks !
 
 CREATE TABLE president
-(presi_num char(2) PRIMARY KEY,
-presi_birthdate varchar(20),
-presi_birthplace varchar(20),
-presi_firstname char(80),
-presi_lastname char(80),
-presi_yearofnomination char(80),
-presi_lastyearinoffice char(80),
-presi_education char(80),
-presi_politicalparty char(80),
-presi_deathdate char(80),
+(president_num char(2) PRIMARY KEY,
+president_birthdate varchar(20),
+president_birthplace varchar(20),
+president_firstname char(80),
+president_lastname char(80),
+president_yearofnomination char(80),
+president_lastyearinoffice char(80),
+president_education char(80),
+president_politicalparty char(80),
+president_deathdate char(80),
 firstlady_num varchar(2), -- Relationship with the first lady table.
-vicepresi_num varchar(3), -- Relationship with the vice president table.
+vicepresident_num varchar(3), -- Relationship with the vice president table.
 pres_petnum varchar(4), -- Relationship with the president library table.
-prespres_libID varchar(3)); -- Relationship with the president pets table.
+president_libID varchar(3)); -- Relationship with the president pets table.
 
 CREATE TABLE firstlady
 (firstlady_num varchar(2) PRIMARY KEY, -- Also in the president's table to show relationship.
@@ -30,33 +31,33 @@ firstlady_birthplace char(60),
 firstlady_interstingfact varchar(8000));
 
 CREATE TABLE vicepresident
-(vicepresi_num varchar(3) PRIMARY KEY,  -- Also in the president's table to show relationship.
-vicepresi_firstname char(40),
-vicepresi_lastname char(40),
-vicepresi_birthplace char(40),
-vicepresi_yearinoffice char(40),
-vicepresi_lastyearinoffice char(40));
+(vicepresident_num varchar(3) PRIMARY KEY,  -- Also in the president's table to show relationship.
+vicepresident_firstname char(40),
+vicepresident_lastname char(40),
+vicepresident_birthplace char(40),
+vicepresident_yearinoffice char(40),
+vicepresident_lastyearinoffice char(40));
 
-CREATE TABLE prespreslibrary 
-(prespres_libID varchar(3) PRIMARY KEY, -- I didn't use this in the president table because not all presidents have library only a few. And I wanted to avoid having too many null columns.
-presppres_libname varchar(8000),
-prespres_libstate varchar(10),
-prespres_libcity char(80),
-prespres_yearopened char(80)); -- I made a relationship with the president table using presi num.
+CREATE TABLE president_presidentiallibrary 
+(president_libID varchar(3) PRIMARY KEY, -- I didn't use this in the president table because not all presidents have library only a few. And I wanted to avoid having too many null columns.
+president_libname varchar(8000),
+president_libstate varchar(10),
+president_libcity char(80),
+president_yearopened char(80)); -- I made a relationship with the president table using presi num.
 
-CREATE TABLE prespets
+CREATE TABLE president_pets
 (pres_petnum varchar(4) PRIMARY KEY,  -- Also in the president's table to show relation ship.
 prespet_name char(80),
 prespet_type char(80));
 
---My first table, all U.S.A presidents from George Washington to Donald Trump.
+# --My first table, all U.S.A presidents from George Washington to Donald Trump.
 
 INSERT INTO president
 VALUES
-('01', 'February 22, 1732','VA','Goerge','Washington','1789','1797','null','Unaffiliated','1799','55','101','1001','301');
+('01', 'February 22, 1732','VA','George','Washington','1789','1797','null','Unaffiliated','1799','55','101','1001','301');
 INSERT INTO president
 VALUES
-('02', 'October 30, 1735','MA','John','Adamas','1797','1801','Harvard University','Federalist','1826','56','102','1002','302');
+('02', 'October 30, 1735','MA','John','Adams','1797','1801','Harvard University','Federalist','1826','56','102','1002','302');
 INSERT INTO president
 VALUES
 ('03', 'April 13, 1743','VA','Thomas','Jefferson','1801','1809','The College of William & Mary','Democratic-Republican','1826','57','103','1003','303');
@@ -68,7 +69,7 @@ VALUES
 ('05', 'April 28, 1758','VA','James','Monroe','1817','1825','The College of William & Mary','Democratic-Republican','1831','59','105','1005','305');
 INSERT INTO president
 VALUES
-('06', 'July 11, 1767','MA','John','Q. Adamas','1825','1829','Harvard University','Democratic-Republican','1848','60','106','1006','306');
+('06', 'July 11, 1767','MA','John','Q. Adams','1825','1829','Harvard University','Democratic-Republican','1848','60','106','1006','306');
 INSERT INTO president
 VALUES
 ('07', 'March 15, 1767','SC','Andrew','Jackson','1829','1837','University of Nashville','Democratic','1845','61','107','1007','307');
@@ -191,7 +192,7 @@ VALUES
 
 
 
---## My second table all the first Ladies of the U.S.A, from Lady Washington to Melania Trump
+# My second table all the first Ladies of the U.S.A, from Lady Washington to Melania Trump
 
 INSERT INTO firstlady
 VALUES
@@ -257,7 +258,7 @@ VALUES
 
 INSERT INTO firstlady
 VALUES
-('71','Eliza','Johson','TN','Taught her husband how to write.');
+('71','Eliza','Johnson','TN','Taught her husband how to write.');
 
 INSERT INTO firstlady
 VALUES
@@ -360,7 +361,7 @@ VALUES
 
 INSERT INTO firstlady
 VALUES
-('97','Laura','Bush','TX','Promoted presi_education and womens health');
+('97','Laura','Bush','TX','Promoted education and women\'s health');
 
 INSERT INTO firstlady
 VALUES
@@ -536,7 +537,7 @@ VALUES
 
 INSERT INTO vicepresident
 VALUES
-('140','Goerge','Bush','MA','1981','1989');
+('140','George','Bush','MA','1981','1989');
 
 INSERT INTO vicepresident
 VALUES
@@ -561,377 +562,377 @@ VALUES
 
 
 
---My four table, I have presidential libraries. Obama's library is scheduled to be finished in the year 2021 I didn't want to leave it blank so I put it in his row.
-INSERT INTO prespreslibrary
+# My four table, I have presidential libraries. Obama's library is scheduled to be finished in the year 2021 I didn't want to leave it blank so I put it in his row.
+INSERT INTO president_presidentiallibrary
 VALUES
-('301', 'Fred W. Smith National prespreslibrary for the Study of George Washington','VA','Mount Vernon','2013');
+('301', 'Fred W. Smith National president_presidentiallibrary for the Study of George Washington','VA','Mount Vernon','2013');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('302', 'Stone prespreslibrary at Adams National Historical Park','MA','Quincy','1870');
+('302', 'Stone president_presidentiallibrary at Adams National Historical Park','MA','Quincy','1870');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('303', 'Robert H. Smith International Center for Jefferson Studies at Kenwood','VA','Charlottesville','2002');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('304', 'James Monroe Museum and Memorial prespreslibrary','VA','Fredericksburg','1786');
+('304', 'James Monroe Museum and Memorial president_presidentiallibrary','VA','Fredericksburg','1786');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('305','null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('306','null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('307','null','null','null','null');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('308','null','null','null','null');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('309','null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('310','null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('311','null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('312','null','null','null','null');
 
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('313','null','null','null','null');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('314','null','null','null','null');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('315','null','null','null','null');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('316', 'Abraham Lincoln Presidential prespreslibrary and Museum','IL','Springfield','2005');
+('316', 'Abraham Lincoln Presidential president_presidentiallibrary and Museum','IL','Springfield','2005');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('317', 'President Andrew Johnson Museum and prespreslibrary','TN','Tusculum','1841');
+('317', 'President Andrew Johnson Museum and president_presidentiallibrary','TN','Tusculum','1841');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('318', 'Ulysses S. Grant Presidential prespreslibrary','MS','Starkville','2017');
+('318', 'Ulysses S. Grant Presidential president_presidentiallibrary','MS','Starkville','2017');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('319', 'Rutherford B. Hayes Presidential Center','OH','Fremont','1916');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('320', 'null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('321','null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('322','null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('323','null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('324','null','null','null','null');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('325', 'William McKinley Presidential prespreslibrary and Museum','OH','Canton','1963');
+('325', 'William McKinley Presidential president_presidentiallibrary and Museum','OH','Canton','1963');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('326','null','null','null','null');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('327','null','null','null','null');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('328', 'Woodrow Wilson Presidential prespreslibrary','VA','Staunton','1846');
+('328', 'Woodrow Wilson Presidential president_presidentiallibrary','VA','Staunton','1846');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('329','null','null','null','null');
 
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('330', 'Calvin Coolidge Presidential prespreslibrary and Museum','MA','Northampton','1920');
+('330', 'Calvin Coolidge Presidential president_presidentiallibrary and Museum','MA','Northampton','1920');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('331', 'Herbert Hoover Presidential prespreslibrary and Museum','IA','West Branch','1962');
+('331', 'Herbert Hoover Presidential president_presidentiallibrary and Museum','IA','West Branch','1962');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('332', 'Franklin D. Roosevelt Presidential prespreslibrary and Museum','NY','Hyde Park','1941');
+('332', 'Franklin D. Roosevelt Presidential president_presidentiallibrary and Museum','NY','Hyde Park','1941');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('333', 'Harry S. Truman Presidential prespreslibrary and Museum','MO','Independence','1957');
+('333', 'Harry S. Truman Presidential president_presidentiallibrary and Museum','MO','Independence','1957');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('334', 'Dwight D. Eisenhower Presidential prespreslibrary, Museum and Boyhood Home','KS','Abilene','1954');
+('334', 'Dwight D. Eisenhower Presidential president_presidentiallibrary, Museum and Boyhood Home','KS','Abilene','1954');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('335', 'John F. Kennedy Presidential prespreslibrary and Museum','MA','Massachusetts','1979');
+('335', 'John F. Kennedy Presidential president_presidentiallibrary and Museum','MA','Massachusetts','1979');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('336', 'Lyndon Baines Johnson prespreslibrary and Museum','TX','Austin','1971');
+('336', 'Lyndon Baines Johnson president_presidentiallibrary and Museum','TX','Austin','1971');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('337', 'Richard Nixon Presidential prespreslibrary and Museum','CA','Yorba Linda','1990');
+('337', 'Richard Nixon Presidential president_presidentiallibrary and Museum','CA','Yorba Linda','1990');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('338', 'Gerald R. Ford Presidential prespreslibrary','MI','Ann Arbor','1981');
+('338', 'Gerald R. Ford Presidential president_presidentiallibrary','MI','Ann Arbor','1981');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('339', 'Jimmy Carter prespreslibrary and Museum','GA','Atlanta','1986');
+('339', 'Jimmy Carter president_presidentiallibrary and Museum','GA','Atlanta','1986');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('340', 'Ronald Reagan Presidential prespreslibrary','CA','Simi Valley','1991');
+('340', 'Ronald Reagan Presidential president_presidentiallibrary','CA','Simi Valley','1991');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
-('341', 'George Bush Presidential prespreslibrary & Museum','TX','College Station','1997');
+('341', 'George Bush Presidential president_presidentiallibrary & Museum','TX','College Station','1997');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('342', 'William J. Clinton Presidential Center and Park','AR','Little Rock','2004');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('343', 'George W. Bush Presidential Center','TX','Dallas','2013');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('344', 'Barack Obama Presidential Center','IL','Chicago','2021');
 
-INSERT INTO prespreslibrary
+INSERT INTO president_presidentiallibrary
 VALUES
 ('345','null','null','null','null');
 
 
---My last table this is a table to show presidential pets. So far the only president not to have a pet is president Donald Trump !
+# My last table this is a table to show presidential pets. So far the only president not to have a pet is president Donald Trump !
 
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1001','Nelson and Prescott','Horses');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1002','Cleopatra','horse');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1003','Grizzle','Dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1004','Polly','Parrot');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1005','Sebastian','Siberian Husky');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1006','null','Alligator');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1007','Polly','Parrot');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1008','null','Tiger');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1009','Sukey','Cow');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1010','The General','Horse');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1110','null','null');
 
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1011','Old Whitey','Horse');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1012','Manson and Dixon','Ponies');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1013','Teacup','Dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1113','Lara','Dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
-('1014','Jackon','Turkey');
+('1014','Jackson','Turkey');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1015','null','White Mice');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1016','Reb','Pony');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1116','Siam','Siamese cat');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1018','Veto','Dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1019','null','null');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1020','null','A mocking bird');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1021','Old Whiskers','Goat');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1022','Yankee Doodle','Parrot');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1023','Emily Spinach','Garden snake');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1024','Mooly Woolly','Cows');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1025','null','Sheep');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1026','Bob','Canary');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1027','Tiger','Cat');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1028','Weejie','Elkhound');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1029','Fala','Black Scottie');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1030','goat','Dewey');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1031','Heidi','Dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1032','Pushinka','Dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1034','Him and Her','Beagles');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1035','Vicky','French Poodle');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1036','Liberty','Dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1037','Grits','Dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1038','Rex','Dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
-('1039','Millie','Srpinger Spaniel');
+('1039','Millie','Springer Spaniel');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1040','Sox','Cat');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUEs
 ('1041','Spot','Springer Spaniel');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1042','Bo','Water dog');
 
-INSERT INTO prespets
+INSERT INTO president_pets
 VALUES
 ('1043','null','null');
 
@@ -942,8 +943,8 @@ select * from firstlady;
 
 select * from vicepresident;
 
-select * from prespreslibrary;
+select * from president_presidentiallibrary;
 
-select * from prespets;
+select * from president_pets;
 
 
